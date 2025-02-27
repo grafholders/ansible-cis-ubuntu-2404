@@ -39,9 +39,6 @@
     - outer_item.apt is defined
     - outer_item.remove | bool
   block:
-    - name: "SECTION-X | SUB-TASK | Ensure services are not in use or purged | purge candidate info"
-      ansible.builtin.debug:
-        msg: "Packages to be removed: {{ outer_item.apt }}"
     - name: "SECTION-X | SUB-TASK | Ensure services are not in use or purged | purge service"
       ansible.builtin.apt:
         name: "{{ outer_item.apt }}"
