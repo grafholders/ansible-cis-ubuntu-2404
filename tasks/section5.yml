@@ -1564,9 +1564,9 @@
             fi
           done <<<"$(printf "%s\n" "${a_path_loc[@]}")"
           if [ -z "$l_output2" ]; then
-            echo -e "\n- Audit Result:\n  *** PASS ***\n - Root's path is correctly configured\n"
+            echo -e "\n- Root's path is correctly configured\n"
           else
-            echo -e "\n- Audit Result:\n  ** FAIL **\n - * Reasons for audit failure * :\n$l_output2\n"
+            echo -e "\n- Verify:\n$l_output2\n"
           fi
         }
       args:
