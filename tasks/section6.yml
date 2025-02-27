@@ -97,9 +97,9 @@
               [ "${{ '{' }}#a_out2[@]{{ '}' }}" -gt "0" ] && a_output2+=(" - File: \"$l_file\" sets:" "${{ '{' }}a_out2[@]{{ '}' }}")
           done < <($l_analyze_cmd cat-config "$l_systemd_config_file" | tac | grep -Pio '^\h*#\h*\/[^#\n\r\h]+\.conf\b')
           if [ "${{ '{' }}#a_output2[@]{{ '}' }}" -le 0 ]; then
-              printf '%s\n' "" "- Audit Result:" "  ** PASS **" "${{ '{' }}a_output[@]{{ '}' }}" ""
+              printf '%s\n' "" "${{ '{' }}a_output[@]{{ '}' }}" ""
           else
-              printf '%s\n' "" "- Audit Result:" "  ** REVIEW **" \
+              printf '%s\n' "" \
               " -  Review file access to ensure they are set IAW site policy:" "${{ '{' }}a_output2[@]{{ '}' }}"
               [ "${{ '{' }}#a_output[@]{{ '}' }}" -gt 0 ] && printf '%s\n' "" "- Correctly set:" "${{ '{' }}a_output[@]{{ '}' }}" ""
           fi
