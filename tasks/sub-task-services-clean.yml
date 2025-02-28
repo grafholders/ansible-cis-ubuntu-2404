@@ -3,10 +3,6 @@
 
 # ------------------------------------------------------------------------------
 
-- name: "SECTION-X | SUB-TASK | Ensure services are not in use or purged | service rule info"
-  ansible.builtin.debug:
-    msg: "{{ outer_item.title }}"
-
 - name: "SECTION-X | SUB-TASK | Ensure services are not in use or purged | check if service available"
   ansible.builtin.shell: |
     set -o pipefail &&
