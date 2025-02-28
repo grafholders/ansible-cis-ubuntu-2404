@@ -53,10 +53,7 @@
       ansible.builtin.debug:
         msg: |
           #############################################################################################
-          Run the following command:
-          # `ss -plntu`
-          Review the output to ensure:
-
+          Review the output of command `ss -plntu` to ensure:
           - All services listed are required on the system and approved by local site policy.
           - Both the port and interface the service is listening on are approved by local site policy.
           - If a listed service is not required:
