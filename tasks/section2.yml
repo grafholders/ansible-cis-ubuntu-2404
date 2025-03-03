@@ -59,6 +59,8 @@
           - If a listed service is not required remove the package containing the service or, if
           the service's package is required for a dependency, stop and mask the service and/or socket
           #############################################################################################
+          {{ cis_ubuntu2404_services_listening_on_network_interface.stdout_lines | join(cis_ubuntu2404_print_info_join_by) }}
+          #############################################################################################
       when:
         - cis_ubuntu2404_services_listening_on_network_interface.stdout_lines is defined
         - cis_ubuntu2404_services_listening_on_network_interface.stdout_lines | length > 0
