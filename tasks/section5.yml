@@ -1558,7 +1558,7 @@
           if [ -z "$l_output2" ]; then
             echo -e "\n- Root's path is correctly configured\n"
           else
-            echo -e "\n- Verify:\n$l_output2\n"
+            echo -e "\n- Triggering root PATH elements:\n$l_output2\n"
           fi
         }
       args:
@@ -1571,7 +1571,7 @@
       ansible.builtin.debug:
         msg: |
           #############################################################################################
-          Correct or justify any:
+          Look for root path integrity. Correct or justify any:
           - Locations that are not directories
           - Empty directories (::)
           - Trailing (:)
