@@ -119,6 +119,8 @@
           - Directories /run/ and /var/lib/systemd/ are mode 0755 or more restrictive
           - All other configured directories are mode 2755, 0750, or more restrictive
           #############################################################################################
+          {{ cis_ubuntu2404_journald_log_file_access.stdout_lines | join(cis_ubuntu2404_print_info_join_by) }}
+          #############################################################################################
       when:
         - cis_ubuntu2404_journald_log_file_access.stdout_lines is defined
         - cis_ubuntu2404_journald_log_file_access.stdout_lines | length > 0
