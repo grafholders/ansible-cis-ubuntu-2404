@@ -1408,6 +1408,8 @@
           Investigate any users with a password change date in the future and correct them.
           Locking the account, expiring the password, or resetting the password manually may be appropriate.
           #############################################################################################
+          {{ cis_ubuntu2404_user_last_pw_change.stdout_lines | join(cis_ubuntu2404_print_info_join_by) }}
+          #############################################################################################
       when:
         - cis_ubuntu2404_user_last_pw_change.stdout_lines is defined
         - cis_ubuntu2404_user_last_pw_change.stdout_lines | length > 0
@@ -1441,6 +1443,8 @@
         msg: |
           #############################################################################################
           Modify any users other than root with UID 0 and assign them a new UID.
+          #############################################################################################
+          {{ cis_ubuntu2404_verify_only_root_returned.stdout_lines | join(cis_ubuntu2404_print_info_join_by) }}
           #############################################################################################
       when:
         - cis_ubuntu2404_verify_only_root_returned.stdout_lines is defined
@@ -1478,6 +1482,8 @@
           #############################################################################################
           Remove any users other than the root user with GID 0 or assign them a new GID if appropriate.
           #############################################################################################
+          {{ cis_ubuntu2404_verify_primary_gid_root.stdout_lines | join(cis_ubuntu2404_print_info_join_by) }}
+          #############################################################################################
       when:
         - cis_ubuntu2404_verify_primary_gid_root.stdout_lines is defined
         - cis_ubuntu2404_verify_primary_gid_root.stdout_lines | length > 0
@@ -1509,6 +1515,8 @@
         msg: |
           #############################################################################################
           Remove any groups other than the root group with GID 0 or assign them a new GID if appropriate.
+          #############################################################################################
+          {{ cis_ubuntu2404_verify_root_only_gid_root.stdout_lines | join(cis_ubuntu2404_print_info_join_by) }}
           #############################################################################################
       when:
         - cis_ubuntu2404_verify_root_only_gid_root.stdout_lines is defined
@@ -1579,6 +1587,8 @@
           - Non root owned directories
           - Directories that less restrictive than mode 0755
           #############################################################################################
+          {{ cis_ubuntu2404_root_path_integrity.stdout_lines | join(cis_ubuntu2404_print_info_join_by) }}
+          #############################################################################################
       when:
         - cis_ubuntu2404_root_path_integrity.stdout_lines is defined
         - cis_ubuntu2404_root_path_integrity.stdout_lines | length > 0
@@ -1629,6 +1639,8 @@
         msg: |
           #############################################################################################
           Verify system accounts, except for root, halt, sync, shutdown or nfsnobody, do not have a valid login shell
+          #############################################################################################
+          {{ cis_ubuntu2404_system_accounts_do_not_have_valid_login_shell.stdout_lines | join(cis_ubuntu2404_print_info_join_by) }}
           #############################################################################################
       when:
         - cis_ubuntu2404_system_accounts_do_not_have_valid_login_shell.stdout_lines is defined
