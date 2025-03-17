@@ -518,9 +518,7 @@
       ansible.builtin.debug:
         msg: |
           #############################################################################################
-          Ensure GPG keys are configured.
-          #############################################################################################
-          {{ cis_ubuntu2404_apt_key_list.stdout_lines | join(cis_ubuntu2404_print_info_join_by) }}
+          Ensure GPG keys reported by the ‘apt-key list’ command are correctly configured.
           #############################################################################################
       when:
         - cis_ubuntu2404_apt_key_list.stdout_lines is defined
@@ -546,9 +544,7 @@
       ansible.builtin.debug:
         msg: |
           #############################################################################################
-          Ensure package manager repositories are configured.
-          #############################################################################################
-          {{ cis_ubuntu2404_apt_key_list.stdout_lines | join(cis_ubuntu2404_print_info_join_by) }}
+          Ensure package manager repositories reported by the ‘apt-cache policy’ command are correctly configured.
           #############################################################################################
       when:
         - cis_ubuntu2404_apt_key_list.stdout_lines is defined
