@@ -242,7 +242,7 @@
         msg: |
           #############################################################################################
           Ensure that no rogue SUID or SGID programs have been introduced into the system.
-          Review the files returned by the action in the Audit section and confirm the integrity of these binaries.
+          Review the following list of SUID and SGID executables and confirm the integrity of these binaries:
           #############################################################################################
           {{ cis_ubuntu2404_suid_executables.stdout_lines | join(cis_ubuntu2404_print_info_join_by) }}
           #############################################################################################
