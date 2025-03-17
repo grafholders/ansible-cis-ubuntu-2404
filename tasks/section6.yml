@@ -71,10 +71,7 @@
           f_file_chk()
           {
               l_maxperm="$( printf '%o' $(( 0777 & ~$l_perm_mask )) )"
-              if [ $(( $l_mode & $l_perm_mask )) -le 0 ] || [[ "$l_type" = "Directory" && "$l_mode" =~ 275(0|5) ]]; then
-                a_out+=("  - $l_type \"$l_logfile\" access is:" \
-                "    mode: \"$l_mode\", owned by: \"$l_user\", and group owned by: \"$l_group\"")
-              else
+              if ! [ $(( $l_mode & $l_perm_mask )) -le 0 ] && ! [[ "$l_type" = "Directory" && "$l_mode" =~ 275(0|5) ]]; then
                 a_out2+=("  - $l_type \"$l_logfile\" access is:" \
                 "    mode: \"$l_mode\", owned by: \"$l_user\", and group owned by: \"$l_group\"" \
                 "    should be mode: \"$l_maxperm\" or more restrictive")
