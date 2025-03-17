@@ -1444,8 +1444,6 @@
           #############################################################################################
           Modify any users other than root with UID 0 and assign them a new UID.
           #############################################################################################
-          {{ cis_ubuntu2404_verify_only_root_returned.stdout_lines | join(cis_ubuntu2404_print_info_join_by) }}
-          #############################################################################################
       when:
         - cis_ubuntu2404_verify_only_root_returned.stdout_lines is defined
         - cis_ubuntu2404_verify_only_root_returned.stdout_lines | length > 0
@@ -1482,8 +1480,6 @@
           #############################################################################################
           Remove any users other than the root user with GID 0 or assign them a new GID if appropriate.
           #############################################################################################
-          {{ cis_ubuntu2404_verify_primary_gid_root.stdout_lines | join(cis_ubuntu2404_print_info_join_by) }}
-          #############################################################################################
       when:
         - cis_ubuntu2404_verify_primary_gid_root.stdout_lines is defined
         - cis_ubuntu2404_verify_primary_gid_root.stdout_lines | length > 0
@@ -1515,8 +1511,6 @@
         msg: |
           #############################################################################################
           Remove any groups other than the root group with GID 0 or assign them a new GID if appropriate.
-          #############################################################################################
-          {{ cis_ubuntu2404_verify_root_only_gid_root.stdout_lines | join(cis_ubuntu2404_print_info_join_by) }}
           #############################################################################################
       when:
         - cis_ubuntu2404_verify_root_only_gid_root.stdout_lines is defined
